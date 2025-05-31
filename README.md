@@ -12,7 +12,14 @@ pip install \
   faiss-cpu \
   python-docx \
   openpyxl \
-  pdfplumber
+  pdfplumber \
+  pycln \
+  isort \
+  black
 
 #  PyMuPDF
+```
+
+```
+pycln . && isort . --profile=black && black .
 ```
