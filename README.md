@@ -8,6 +8,7 @@ pip install \
   jupyterlab \
   pandas \
   numpy \
+  seaborn \
   sentence-transformers \
   faiss-cpu \
   python-docx \
@@ -17,7 +18,6 @@ pip install \
   isort \
   black
 
-#  PyMuPDF
 ```
 
 ```
