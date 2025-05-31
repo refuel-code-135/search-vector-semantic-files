@@ -18,8 +18,15 @@ pip install \
   isort \
   black
 
+pip install streamlit
+
+
 ```
 
 ```
 pycln . && isort . --profile=black && black .
+```
+
+```
+streamlit run demo.py
 ```
