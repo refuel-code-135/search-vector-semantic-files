@@ -20,6 +20,7 @@ pip install \
 
 pip install streamlit
 
+jupyter lab
 
 ```
 
