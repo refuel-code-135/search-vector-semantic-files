@@ -11,8 +11,8 @@ query = st.text_input("キーワードを入力してください")
 if query:
     # モデル & データ読み込み
     model = SentenceTransformer("intfloat/multilingual-e5-small")
-    index = faiss.read_index("notebooks/data/faiss.index")
-    with open("notebooks/data/faiss_meta.pkl", "rb") as f:
+    index = faiss.read_index("data/faiss/faiss.index")
+    with open("data/faiss/faiss_meta.pkl", "rb") as f:
         chunks = pickle.load(f)
 
     # クエリベクトル化 & 検索
