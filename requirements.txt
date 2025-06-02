@@ -1,2 +1,13 @@
-fastapi
-uvicorn
+black
+faiss-cpu
+isort
+jupyterlab
+numpy
+openpyxl
+pandas
+pdfplumber
+pycln
+python-docx
+seaborn
+sentence-transformers
+streamlit

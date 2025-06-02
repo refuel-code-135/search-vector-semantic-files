@@ -1,27 +1,17 @@
-# semantic-file-search
+# search-vector-semantic-files
 
-```
-conda create -n semantic-file-search python=3.10
-conda activate semantic-file-search
+```bash
+export CONDA_ENV=search-vector-semantic-files
 
-pip install \
-  jupyterlab \
-  pandas \
-  numpy \
-  seaborn \
-  sentence-transformers \
-  faiss-cpu \
-  python-docx \
-  openpyxl \
-  pdfplumber \
-  pycln \
-  isort \
-  black
+# Create and activate a new conda environment
+conda create -n $CONDA_ENV python=3.10
+conda activate $CONDA_ENV
 
-pip install streamlit
+# Install required Python packages
+pip install -r requirements.txt
 
+# Start notetebook
 jupyter lab
-
 ```
 
 ```
