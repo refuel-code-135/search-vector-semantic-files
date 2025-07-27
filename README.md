@@ -10,7 +10,7 @@ conda activate $CONDA_ENV
 # Install required Python packages
 pip install -r requirements.txt
 
-# Start notetebook
+# Start notebook
 jupyter lab
 ```
 

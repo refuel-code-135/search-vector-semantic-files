@@ -1,20 +1,18 @@
-# Byte-compiled / optimized / DLL files
+# General
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 
-# Environment
 .env
 
-# Jupyter notebooks
 .ipynb_checkpoints
-
-# macOS
 .DS_Store
-
+.virtual_documents/
 
 # Data
+data/*
+
 data/input/pdf/*
 !data/input/pdf/.gitkeep
 

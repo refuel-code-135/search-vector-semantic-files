@@ -5,37 +5,41 @@ import pickle
 from sentence_transformers import SentenceTransformer
 import numpy as np
 
-st.title("自然文ファイル検索デモ")
+st.title("File Server Semantic Search")
 
-query = st.text_input("キーワードを入力してください")
+# Input query
+query = st.text_input("Enter your question or topic:")
+
 if query:
-    # モデル & データ読み込み
+    # Load embedding model and FAISS index
     model = SentenceTransformer("intfloat/multilingual-e5-small")
     index = faiss.read_index("data/faiss/faiss.index")
+
     with open("data/faiss/faiss_meta.pkl", "rb") as f:
         chunks = pickle.load(f)
 
-    # クエリベクトル化 & 検索
+    # Encode query and search FAISS index
     vec = model.encode([query], normalize_embeddings=True).astype("float32")
     k = 5
-    D, I = index.search(vec, k)
+    D, I = index.search(vec, k)  # D: distances, I: indices
 
-    # 結果を整形してソート（距離の昇順 = 類似度が高い順）
+    # Format and sort results by similarity
     results = []
     for idx, dist in zip(I[0], D[0]):
         if idx < len(chunks):
             results.append({
                 "score": float(dist),
                 "file_path": chunks[idx]["file_path"],
-                "text": chunks[idx]["text"][:150] + "..."  # 長すぎると省略
+                "page": chunks[idx].get("page", "?"),  # fallback to "?" if not available
+                "text": chunks[idx]["text"][:150] + "..."
             })
     results.sort(key=lambda x: x["score"])
 
-    # 表示
-    st.subheader("検索結果（Top 5）:")
+    # Display results
+    st.subheader("Top 5 Results:")
     for res in results:
         st.markdown("---")
-        st.write(f"**{res['file_path']}**")
-        st.write(f"類似スコア（L2距離）: `{res['score']:.4f}`")
+        st.write(f"**{res['file_path']} (Page {res['page']})**")
+        st.write(f"Similarity Score (L2 distance): `{res['score']:.4f}`")
         st.text(res["text"])
 
