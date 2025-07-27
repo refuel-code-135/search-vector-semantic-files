@@ -1,4 +1,3 @@
-# demo.py
 import pickle
 
 import faiss
