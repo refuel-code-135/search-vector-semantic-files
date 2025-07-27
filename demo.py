@@ -1,9 +1,10 @@
 # demo.py
-import streamlit as st
-import faiss
 import pickle
-from sentence_transformers import SentenceTransformer
+
+import faiss
 import numpy as np
+import streamlit as st
+from sentence_transformers import SentenceTransformer
 
 st.title("File Server Semantic Search")
 
@@ -27,12 +28,16 @@ if query:
     results = []
     for idx, dist in zip(I[0], D[0]):
         if idx < len(chunks):
-            results.append({
-                "score": float(dist),
-                "file_path": chunks[idx]["file_path"],
-                "page": chunks[idx].get("page", "?"),  # fallback to "?" if not available
-                "text": chunks[idx]["text"][:150] + "..."
-            })
+            results.append(
+                {
+                    "score": float(dist),
+                    "file_path": chunks[idx]["file_path"],
+                    "page": chunks[idx].get(
+                        "page", "?"
+                    ),  # fallback to "?" if not available
+                    "text": chunks[idx]["text"][:150] + "...",
+                }
+            )
     results.sort(key=lambda x: x["score"])
 
     # Display results
@@ -42,4 +47,3 @@ if query:
         st.write(f"**{res['file_path']} (Page {res['page']})**")
         st.write(f"Similarity Score (L2 distance): `{res['score']:.4f}`")
         st.text(res["text"])
-
