@@ -1,5 +1,21 @@
 # search-vector-semantic-files
 
+## overview
+
+This notebook demonstrates a simple end-to-end pipeline for converting PDF documents into searchable vector representations using FAISS and multilingual sentence embeddings.
+
+Workflow:
+- Extract text from PDF files
+- Generate sentence embeddings with a multilingual model
+- Store vectors in a FAISS index
+- Perform semantic search using a natural language query
+
+
+## Screenshot (demo.py)
+<img width="951" height="708" alt="image" src="https://github.com/user-attachments/assets/ff4b10a7-8105-4a45-bdc0-67af134587d7" />
+
+
+## Set Up Analysis environment
 ```bash
 export CONDA_ENV=search-vector-semantic-files
 
@@ -14,10 +30,15 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
+## Demo
+```
+streamlit run demo.py
+```
+
+## Code Format
 ```
 pycln . && isort . --profile=black && black .
 ```
 
-```
-streamlit run demo.py
-```
+
+
