@@ -35,10 +35,3 @@ jupyter lab
 streamlit run demo.py
 ```
 
-## Code Format
-```
-pycln . && isort . --profile=black && black .
-```
-
-
-
